@@ -1,0 +1,42 @@
+﻿@inherits WebViewPage<DotNetOpenAuth.WebAPI.HostSample.Models.AccountAuthorizeModel>
+@using System.Security.Policy
+@using DotNetOpenAuth.OAuth2
+@{
+    ViewBag.Title = "Authorise";
+}
+<h2>
+    Authorize
+</h2>
+<div>
+    <b>Warning</b>: Never give your login credentials to another web site or application.
+</div>
+<p>
+    The @Html.Encode(Model.ClientApp) application is requesting to access the private
+    data in your account here. Is that alright with you?
+</p>
+<p>
+    <b>Requested access: </b>@Html.Encode(String.Join(" ", Model.Scope.ToArray()))
+</p>
+<form action="@Url.Action("AuthoriseResponse", "OAuth")" method="POST">
+@Html.AntiForgeryToken()
+@Html.Hidden("client_id", Model.AuthorizationRequest.ClientIdentifier)
+@Html.Hidden("redirect_uri", Model.AuthorizationRequest.Callback)
+@Html.Hidden("state", Model.AuthorizationRequest.ClientState)
+@Html.Hidden("scope", OAuthUtilities.JoinScopes(Model.AuthorizationRequest.Scope))
+@Html.Hidden("response_type", Model.AuthorizationRequest.ResponseType == DotNetOpenAuth.OAuth2.Messages.EndUserAuthorizationResponseType.AccessToken ? "token" : "code")
+<div class="btn-group">
+    <button type="submit" value="True" name="IsApproved" class="btn btn-primary">
+        Approve</button>
+    <button type="submit" value="False" name="IsApproved" class="btn">
+        Cancel</button>
+</div>
+</form>
+<script language="javascript" type="text/javascript">
+			//<![CDATA[
+    // Frame busting code (to protect us from being hosted in an iframe).
+    // This protects us from click-jacking.
+    if (document.location !== window.top.location) {
+        window.top.location = document.location;
+    }
+			//]]>
+</script>

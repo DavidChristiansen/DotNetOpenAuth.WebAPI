@@ -1,0 +1,27 @@
+﻿<h2>
+    Log On</h2>
+<form action="@Url.Action("LogOn")" method="POST">
+    <input type="hidden" name="returnURL" value="@ViewBag.ReturnURl"/>
+    <div>
+        <fieldset>
+            <legend>Account Information</legend>
+            <p>
+                <label for="username">
+                    Username:</label>
+                @Html.TextBox("username") @Html.ValidationMessage("username")
+            </p>
+            <p>
+                <label for="password">
+                    Password:</label>
+                @Html.Password("password") @Html.ValidationMessage("password")
+            </p>
+            <p>
+                <label for="rememberMe" class="control-label">Remember Me
+                    <input type="checkbox" name="rememberMe" value="1"/></label>
+            </p>
+            <p>
+                <input type="submit" value="Log On" class="btn" />
+            </p>
+        </fieldset>
+    </div>
+</form>
