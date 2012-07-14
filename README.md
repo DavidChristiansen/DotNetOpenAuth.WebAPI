@@ -16,21 +16,21 @@ Details
 
 I have included the following in the source
 
-**source/DotNetOpenAuth.WebAPI**
+**/[DotNetOpenAuth.WebAPI](https://github.com/DavidChristiansen/DotNetOpenAuth.WebAPI.40/tree/master/source/DotNetOpenAuth.WebAPI)**
 
 - Code required for the magic to happen
 
-**source/DotNetOpenAuth.WebAPI.ClientSample.MVC3**
+**/[DotNetOpenAuth.WebAPI.ClientSample.MVC3](https://github.com/DavidChristiansen/DotNetOpenAuth.WebAPI.40/tree/master/source/DotNetOpenAuth.WebAPI.ClientSample.MVC3)**
 
 - A sample client demonstrating communicating with a WebAPI resource via JavaScript as well as C#. Simply check/uncheck the checkbox to switch between the client modes
 
-**DotNetOpenAuth.WebAPI.HostSample**
+**/[DotNetOpenAuth.WebAPI.HostSample](https://github.com/DavidChristiansen/DotNetOpenAuth.WebAPI.40/tree/master/source/DotNetOpenAuth.WebAPI.HostSample)**
 
 - A sample authorisation server and WebAPI host utilising the functionality exposed in DotNetOpenAuth.WebAPI
 
 Feedback
 --
 
-As I mentioned earlier, this is just a functional stub i have put together tonight. It has not been fully tested as yet but as always feedback is always welcome.
+As I mentioned earlier, this is still 'work in progress' but nevertheless a functional stub that I have put together. It has not been fully tested as yet. As always feedback is always welcome.
 
-You can get me via either github or [dotnetopenauth@davedoes.net](mailto:dotnetopenauth@davedoes.net)
+You can get me via either github, on the [DotNetOpenAuth forum](https://groups.google.com/forum/#!forum/dotnetopenid) or [dotnetopenauth@davedoes.net](mailto:dotnetopenauth@davedoes.net)
