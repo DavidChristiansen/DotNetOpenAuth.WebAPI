@@ -57,11 +57,12 @@ namespace DotNetOpenAuth.WebAPI.HostSample.Infrastructure.OAuth {
 		#region ICryptoKeyStore Members
 
 		public CryptoKey GetKey(string bucket, string handle) {
-			// It is critical that this lookup be case-sensitive, which can only be configured at the database.
-			var matches = from key in MvcApplication.DataContext.SymmetricCryptoKeys
-						  where key.Bucket == bucket && key.Handle == handle
-						  select new CryptoKey(key.Secret, key.ExpiresUtc.AsUtc());
-
+            var _db = MvcApplication.DataContext.SymmetricCryptoKeys.Where(k => k.Bucket == bucket && k.Handle == handle).ToList();
+            // Perform a case senstive match
+            var matches = from key in _db
+                          where string.Equals(key.Bucket, bucket, StringComparison.Ordinal) && 
+                          string.Equals(key.Handle, handle, StringComparison.Ordinal)
+                          select new CryptoKey(key.Secret, key.ExpiresUtc.AsUtc());
 			return matches.FirstOrDefault();
 		}
 
