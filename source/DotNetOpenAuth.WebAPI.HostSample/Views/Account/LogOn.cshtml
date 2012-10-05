@@ -8,12 +8,12 @@
             <p>
                 <label for="username">
                     Username:</label>
-                @Html.TextBox("username") @Html.ValidationMessage("username")
+                @Html.TextBox("username", "bob") @Html.ValidationMessage("username")
             </p>
             <p>
                 <label for="password">
                     Password:</label>
-                @Html.Password("password") @Html.ValidationMessage("password")
+                @Html.Password("password","test") @Html.ValidationMessage("password")
             </p>
             <p>
                 <label for="rememberMe" class="control-label">Remember Me

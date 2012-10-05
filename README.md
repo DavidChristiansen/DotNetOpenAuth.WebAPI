@@ -1,18 +1,15 @@
-DotNetOpenAuth.WebAPI.40
-========================
-DotNetOpenAuth for ASP.NET WebAPI (OpenID/OAuth/OAuth2)
+#DotNetOpenAuth.WebAPI.40
+*DotNetOpenAuth for ASP.NET WebAPI (OpenID/OAuth/OAuth2)*
 
 
 **Please note that this project is still in development and should be considered unstable-ish*
 
 
-Purpose
-------------
+##Purpose
 
 This project was developed to look into ways we can bring OAuth to the world of ASP.NET WebAPI.
 
-Details
-------------
+##Details
 
 I have included the following in the source
 
@@ -28,8 +25,17 @@ I have included the following in the source
 
 - A sample authorisation server and WebAPI host utilising the functionality exposed in DotNetOpenAuth.WebAPI
 
-Feedback
---
+###Getting Started
+
+1. Launch the solution in visual studio
+2. Start debugging both the client and host sample projects
+3. Navigate to the Host sample (http://localhost:49810/)
+4. Ensure you have SQL Express installed and running
+5. Click the **Create Database** button
+6. Navigate to the client sample (http://localhost:49907/)
+7. Start clicking buttons and enjoy
+
+##Feedback
 
 As I mentioned earlier, this is still 'work in progress' but nevertheless a functional stub that I have put together. It has not been fully tested as yet. As always feedback is always welcome.
 
