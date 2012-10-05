@@ -1,24 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <title>ASP.NET Web API</title>
-    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
-    <script src="@Url.Content("~/Scripts/modernizr-2.0.6-development-only.js")" type="text/javascript"></script>
-    <meta name="viewport" content="width=device-width" />
-</head>
-<body>
-    <header>
-        <div class="content-wrapper">       
-            <div class="float-left">
-                <p class="site-title"><a href="/">ASP.NET Web API</a></p>
-            </div>
-        </div>
-    </header>
-    <div id="body">
-        <section class="content-wrapper main-content clear-fix">
-           
-        </section>
-    </div>
-</body>
-</html>
+@if (!ViewBag.DBExists) {
+    <p>Be sure to <a class="btn btn-primary btn-mini" href="@Url.Action("CreateDatabase")" >Create the sample database</a></p>
+} else {
+    <p>All good. Try out <a href="http://localhost:49907/">the client sample</a></p>
+}
