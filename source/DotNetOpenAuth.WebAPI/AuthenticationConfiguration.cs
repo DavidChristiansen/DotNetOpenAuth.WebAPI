@@ -89,8 +89,11 @@ namespace DotNetOpenAuth.WebAPI {
 
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) {
             try {
-                string authHeader = request.Headers.GetValues("Authorization").First();
-
+                if (request.Headers.All(x => x.Key != "Authorization"))
+                    return base.SendAsync(request, cancellationToken);
+                string authHeader = request.Headers.GetValues("Authorization").FirstOrDefault();
+                if (authHeader == null)
+                    return base.SendAsync(request, cancellationToken);
                 string header = "Bearer ";
 
                 if (string.CompareOrdinal(authHeader, 0, header, 0, header.Length) == 0) {
