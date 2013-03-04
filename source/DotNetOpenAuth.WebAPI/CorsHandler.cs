@@ -37,6 +37,11 @@ namespace DotNetOpenAuth.WebAPI {
                 } else {
                     return base.SendAsync(request, cancellationToken).ContinueWith<HttpResponseMessage>(t => {
                                                                                                             HttpResponseMessage resp = t.Result;
+                /*This fixes the problem with CorsRequests using credentials in FF and Chrome*/                                                                                            
+                resp.Headers.Add("Access-Control-Allow-Credentials", "true");
+                resp.Headers.Add(AccessControlAllowMethods, "GET, POST, PUT, DELETE");
+                resp.Headers.Add(AccessControlAllowHeaders, "Authorization");                                                                                                            
+                                                                                                            
                                                                                                             resp.Headers.Add(AccessControlAllowOrigin, request.Headers.GetValues(Origin).First());
                                                                                                             return resp;
                                                                                                         });
