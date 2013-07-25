@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<label class="control-label checkbox">
+    <input type="checkbox" id="ServerFetch" checked="checked"/>&nbsp;
+    Perform OAuth Authz on server
+</label>
+<button id="GetValuesButton" class="btn btn-primary">Get Values</button>
+<div id="Output" class="alert alert-info">@ViewBag.Values</div>
+@section scripts
+{
+    <script src="@Url.Content("~/Scripts/dnoa.webapisample.client.js")" type="text/javascript"></script>
+    <script language="javascript">
+        window.DNOA.OAuth.Client.Setup({
+            GetValuesURI: '@Url.Action("GetValues")'
+        })
+    </script>
+}

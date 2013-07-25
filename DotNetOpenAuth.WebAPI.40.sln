@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetOpenAuth.WebAPI.Clien
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetOpenAuth.WebAPI.HostSample", "source\DotNetOpenAuth.WebAPI.HostSample\DotNetOpenAuth.WebAPI.HostSample.csproj", "{A41221D5-D455-4558-A720-59A7D05702FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetOpenAuth.WebAPI.ClientSample.MVC4", "source\DotNetOpenAuth.WebAPI.ClientSample.MVC4\DotNetOpenAuth.WebAPI.ClientSample.MVC4.csproj", "{D734BD92-1B1A-4965-BEF4-0197B8D4BA66}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{A41221D5-D455-4558-A720-59A7D05702FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A41221D5-D455-4558-A720-59A7D05702FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A41221D5-D455-4558-A720-59A7D05702FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D734BD92-1B1A-4965-BEF4-0197B8D4BA66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D734BD92-1B1A-4965-BEF4-0197B8D4BA66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D734BD92-1B1A-4965-BEF4-0197B8D4BA66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D734BD92-1B1A-4965-BEF4-0197B8D4BA66}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
