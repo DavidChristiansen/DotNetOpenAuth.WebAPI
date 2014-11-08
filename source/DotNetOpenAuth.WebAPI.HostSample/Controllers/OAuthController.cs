@@ -17,7 +17,7 @@ namespace DotNetOpenAuth.WebAPI.HostSample.Controllers {
         /// </summary>
         /// <returns>The response to the Client.</returns>
         public ActionResult Token() {
-            return this.authorizationServer.HandleTokenRequest(this.Request).AsActionResult();
+            return this.authorizationServer.HandleTokenRequest(this.Request).AsActionResultMvc5();
         }
 
         /// <summary>
@@ -32,12 +32,12 @@ namespace DotNetOpenAuth.WebAPI.HostSample.Controllers {
                 throw new HttpException((int)HttpStatusCode.BadRequest, "Missing authorization request.");
             }
 
-            var requestingClient = MvcApplication.DataContext.Clients.First(c => c.ClientIdentifier == pendingRequest.ClientIdentifier);
+            var requestingClient = WebApiApplication.DataContext.Clients.First(c => c.ClientIdentifier == pendingRequest.ClientIdentifier);
 
             // Consider auto-approving if safe to do so.
             if (((OAuth2AuthorizationServer)this.authorizationServer.AuthorizationServerServices).CanBeAutoApproved(pendingRequest)) {
                 var approval = this.authorizationServer.PrepareApproveAuthorizationRequest(pendingRequest, HttpContext.User.Identity.Name);
-                return this.authorizationServer.Channel.PrepareResponse(approval).AsActionResult();
+                return this.authorizationServer.Channel.PrepareResponse(approval).AsActionResultMvc5();
             }
 
             var model = new AccountAuthorizeModel {
@@ -66,14 +66,14 @@ namespace DotNetOpenAuth.WebAPI.HostSample.Controllers {
                 // The authorization we file in our database lasts until the user explicitly revokes it.
                 // You can cause the authorization to expire by setting the ExpirationDateUTC
                 // property in the below created ClientAuthorization.
-                var client = MvcApplication.DataContext.Clients.First(c => c.ClientIdentifier == pendingRequest.ClientIdentifier);
+                var client = WebApiApplication.DataContext.Clients.First(c => c.ClientIdentifier == pendingRequest.ClientIdentifier);
                 client.ClientAuthorizations.Add(
                     new ClientAuthorization {
                         Scope = OAuthUtilities.JoinScopes(pendingRequest.Scope),
-                        User = MvcApplication.LoggedInUser,
+                        User = WebApiApplication.LoggedInUser,
                         CreatedOnUtc = DateTime.UtcNow,
                     });
-                MvcApplication.DataContext.SubmitChanges(); // submit now so that this new row can be retrieved later in this same HTTP request
+                WebApiApplication.DataContext.SubmitChanges(); // submit now so that this new row can be retrieved later in this same HTTP request
 
                 // In this simple sample, the user either agrees to the entire scope requested by the client or none of it.  
                 // But in a real app, you could grant a reduced scope of access to the client by passing a scope parameter to this method.
@@ -82,7 +82,7 @@ namespace DotNetOpenAuth.WebAPI.HostSample.Controllers {
                 response = this.authorizationServer.PrepareRejectAuthorizationRequest(pendingRequest);
             }
 
-            return this.authorizationServer.Channel.PrepareResponse(response).AsActionResult();
+            return this.authorizationServer.Channel.PrepareResponse(response).AsActionResultMvc5();
         }
     }
 }

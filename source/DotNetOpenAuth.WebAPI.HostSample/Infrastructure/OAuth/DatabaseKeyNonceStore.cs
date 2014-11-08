@@ -41,9 +41,9 @@ namespace DotNetOpenAuth.WebAPI.HostSample.Infrastructure.OAuth {
 		/// property.
 		/// </remarks>
 		public bool StoreNonce(string context, string nonce, DateTime timestampUtc) {
-			MvcApplication.DataContext.Nonces.InsertOnSubmit(new Nonce { Context = context, Code = nonce, Timestamp = timestampUtc });
+			WebApiApplication.DataContext.Nonces.InsertOnSubmit(new Nonce { Context = context, Code = nonce, Timestamp = timestampUtc });
 			try {
-				MvcApplication.DataContext.SubmitChanges();
+				WebApiApplication.DataContext.SubmitChanges();
 				return true;
 			} catch (System.Data.Linq.DuplicateKeyException) {
 				return false;
@@ -57,7 +57,7 @@ namespace DotNetOpenAuth.WebAPI.HostSample.Infrastructure.OAuth {
 		#region ICryptoKeyStore Members
 
 		public CryptoKey GetKey(string bucket, string handle) {
-            var _db = MvcApplication.DataContext.SymmetricCryptoKeys.Where(k => k.Bucket == bucket && k.Handle == handle).ToList();
+            var _db = WebApiApplication.DataContext.SymmetricCryptoKeys.Where(k => k.Bucket == bucket && k.Handle == handle).ToList();
             // Perform a case senstive match
             var matches = from key in _db
                           where string.Equals(key.Bucket, bucket, StringComparison.Ordinal) && 
@@ -67,7 +67,7 @@ namespace DotNetOpenAuth.WebAPI.HostSample.Infrastructure.OAuth {
 		}
 
 		public IEnumerable<KeyValuePair<string, CryptoKey>> GetKeys(string bucket) {
-			return from key in MvcApplication.DataContext.SymmetricCryptoKeys
+			return from key in WebApiApplication.DataContext.SymmetricCryptoKeys
 				   where key.Bucket == bucket
 				   orderby key.ExpiresUtc descending
 				   select new KeyValuePair<string, CryptoKey>(key.Handle, new CryptoKey(key.Secret, key.ExpiresUtc.AsUtc()));
@@ -81,14 +81,14 @@ namespace DotNetOpenAuth.WebAPI.HostSample.Infrastructure.OAuth {
 				ExpiresUtc = key.ExpiresUtc,
 			};
 
-			MvcApplication.DataContext.SymmetricCryptoKeys.InsertOnSubmit(keyRow);
-			MvcApplication.DataContext.SubmitChanges();
+			WebApiApplication.DataContext.SymmetricCryptoKeys.InsertOnSubmit(keyRow);
+			WebApiApplication.DataContext.SubmitChanges();
 		}
 
 		public void RemoveKey(string bucket, string handle) {
-			var match = MvcApplication.DataContext.SymmetricCryptoKeys.FirstOrDefault(k => k.Bucket == bucket && k.Handle == handle);
+			var match = WebApiApplication.DataContext.SymmetricCryptoKeys.FirstOrDefault(k => k.Bucket == bucket && k.Handle == handle);
 			if (match != null) {
-				MvcApplication.DataContext.SymmetricCryptoKeys.DeleteOnSubmit(match);
+				WebApiApplication.DataContext.SymmetricCryptoKeys.DeleteOnSubmit(match);
 			}
 		}
 

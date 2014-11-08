@@ -1,21 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
+using System.Web.Optimization;
 using System.Web.Routing;
-using DotNetOpenAuth.WebAPI.HostSample.Infrastructure.OAuth;
 
 namespace DotNetOpenAuth.WebAPI.HostSample {
-    // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
-    // visit http://go.microsoft.com/?LinkId=9394801
+    using DotNetOpenAuth.WebAPI.HostSample.Infrastructure.OAuth;
 
-    public class MvcApplication : System.Web.HttpApplication {
-        public static void RegisterGlobalFilters(GlobalFilterCollection filters) {
-            filters.Add(new HandleErrorAttribute());
-        }
+    public class WebApiApplication : System.Web.HttpApplication {
 
         public static DatabaseKeyNonceStore KeyNonceStore { get; set; }
 
@@ -57,30 +52,15 @@ namespace DotNetOpenAuth.WebAPI.HostSample {
                 }
             }
         }
-        public static void RegisterRoutes(RouteCollection routes) {
-            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
-            routes.MapRoute(
-                "Default", // Route name
-                "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
-            );
-
-        }
-
         protected void Application_Start() {
             AreaRegistration.RegisterAllAreas();
+            GlobalConfiguration.Configure(WebApiConfig.Register);
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthenticationConfig.ConfigureGlobal(GlobalConfiguration.Configuration);
             KeyNonceStore = new DatabaseKeyNonceStore();
-            RouteTable.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
-            RegisterGlobalFilters(GlobalFilters.Filters);
-            RegisterRoutes(RouteTable.Routes);
         }
-
 
         protected void Application_Error(object sender, EventArgs e) {
             // In the event of an unhandled exception, reverse any changes that were made to the database to avoid any partial database updates.

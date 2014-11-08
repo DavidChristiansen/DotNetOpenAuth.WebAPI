@@ -26,11 +26,11 @@ namespace DotNetOpenAuth.WebAPI.HostSample.Infrastructure.OAuth {
 		#region Implementation of IAuthorizationServerHost
 
         public ICryptoKeyStore CryptoKeyStore {
-			get { return MvcApplication.KeyNonceStore; }
+			get { return WebApiApplication.KeyNonceStore; }
 		}
 
 		public INonceStore NonceStore {
-			get { return MvcApplication.KeyNonceStore; }
+			get { return WebApiApplication.KeyNonceStore; }
 		}
 
 		public AccessTokenResult CreateAccessToken(IAccessTokenRequest accessTokenRequestMessage) {
@@ -59,7 +59,7 @@ namespace DotNetOpenAuth.WebAPI.HostSample.Infrastructure.OAuth {
 		}
 
 		public IClientDescription GetClient(string clientIdentifier) {
-			var consumerRow = MvcApplication.DataContext.Clients.SingleOrDefault(
+			var consumerRow = WebApiApplication.DataContext.Clients.SingleOrDefault(
 				consumerCandidate => consumerCandidate.ClientIdentifier == clientIdentifier);
 			if (consumerRow == null) {
 				throw new ArgumentOutOfRangeException("clientIdentifier");
@@ -103,7 +103,7 @@ namespace DotNetOpenAuth.WebAPI.HostSample.Infrastructure.OAuth {
 			if (authorizationRequest.ResponseType == EndUserAuthorizationResponseType.AuthorizationCode) {
 				// Never issue auto-approval if the client secret is blank, since that too makes it easy to spoof
 				// a client's identity and obtain unauthorized access.
-				var requestingClient = MvcApplication.DataContext.Clients.First(c => c.ClientIdentifier == authorizationRequest.ClientIdentifier);
+				var requestingClient = WebApiApplication.DataContext.Clients.First(c => c.ClientIdentifier == authorizationRequest.ClientIdentifier);
 				if (!string.IsNullOrEmpty(requestingClient.ClientSecret)) {
 					return this.IsAuthorizationValid(
 						authorizationRequest.Scope,
@@ -149,7 +149,7 @@ namespace DotNetOpenAuth.WebAPI.HostSample.Infrastructure.OAuth {
 			// often disregard a token that is minted immediately after the authorization record is stored in the db.
 			// To compensate for this, we'll increase the timestamp on the token's issue date by 1 second.
 			issuedUtc += TimeSpan.FromSeconds(1);
-			var grantedScopeStrings = from auth in MvcApplication.DataContext.ClientAuthorizations
+			var grantedScopeStrings = from auth in WebApiApplication.DataContext.ClientAuthorizations
 									  where
 										  auth.Client.ClientIdentifier == clientIdentifier &&
 										  auth.CreatedOnUtc <= issuedUtc &&

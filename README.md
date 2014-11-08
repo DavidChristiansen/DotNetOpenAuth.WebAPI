@@ -1,8 +1,5 @@
-#DotNetOpenAuth.WebAPI.40
+#DotNetOpenAuth.WebAPI
 *DotNetOpenAuth for ASP.NET WebAPI (OpenID/OAuth/OAuth2)*
-
-
-**Please note that this project is still in development and should be considered unstable-ish*
 
 
 ##Purpose
@@ -13,17 +10,21 @@ This project was developed to look into ways we can bring OAuth to the world of 
 
 I have included the following in the source
 
-**/[DotNetOpenAuth.WebAPI](https://github.com/DavidChristiansen/DotNetOpenAuth.WebAPI.40/tree/master/source/DotNetOpenAuth.WebAPI)**
+**/DotNetOpenAuth.WebAPI
 
 - Code required for the magic to happen
 
-**/[DotNetOpenAuth.WebAPI.ClientSample.MVC3](https://github.com/DavidChristiansen/DotNetOpenAuth.WebAPI.40/tree/master/source/DotNetOpenAuth.WebAPI.ClientSample.MVC3)**
+**/DotNetOpenAuth.WebAPI.ClientSample
 
 - A sample client demonstrating communicating with a WebAPI resource via JavaScript as well as C#. Simply check/uncheck the checkbox to switch between the client modes
 
-**/[DotNetOpenAuth.WebAPI.HostSample](https://github.com/DavidChristiansen/DotNetOpenAuth.WebAPI.40/tree/master/source/DotNetOpenAuth.WebAPI.HostSample)**
+**/DotNetOpenAuth.WebAPI.HostSample
 
 - A sample authorisation server and WebAPI host utilising the functionality exposed in DotNetOpenAuth.WebAPI
+
+###Requirements
+
+This sample uses Framework v4.5.1, MVC5 and requires SQL Express
 
 ###Getting Started
 
@@ -37,6 +38,4 @@ I have included the following in the source
 
 ##Feedback
 
-As I mentioned earlier, this is still 'work in progress' but nevertheless a functional stub that I have put together. It has not been fully tested as yet. As always feedback is always welcome.
-
-You can get me via either github, on the [DotNetOpenAuth forum](https://groups.google.com/forum/#!forum/dotnetopenid) or [dotnetopenauth@davedoes.net](mailto:dotnetopenauth@davedoes.net)
+As always feedback is always welcome.  Raise an issue if you have problems.
