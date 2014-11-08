@@ -10,15 +10,15 @@ This project was developed to look into ways we can bring OAuth to the world of 
 
 I have included the following in the source
 
-**DotNetOpenAuth.WebAPI
+**DotNetOpenAuth.WebAPI**
 
 - Code required for the magic to happen
 
-**DotNetOpenAuth.WebAPI.ClientSample
+**DotNetOpenAuth.WebAPI.ClientSample**
 
 - A sample client demonstrating communicating with a WebAPI resource via JavaScript as well as C#. Simply check/uncheck the checkbox to switch between the client modes
 
-**DotNetOpenAuth.WebAPI.HostSample
+**DotNetOpenAuth.WebAPI.HostSample**
 
 - A sample authorisation server and WebAPI host utilising the functionality exposed in DotNetOpenAuth.WebAPI
 
