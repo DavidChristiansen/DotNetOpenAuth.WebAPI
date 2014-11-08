@@ -3,7 +3,6 @@
 
 [![Build status](https://ci.appveyor.com/api/projects/status/71ev9i45h6ah4wcf?svg=true)](https://ci.appveyor.com/project/DavidChristiansen/dotnetopenauth-webapi)
 
-
 ##Purpose
 
 This project was developed to look into ways we can bring OAuth to the world of ASP.NET WebAPI.
