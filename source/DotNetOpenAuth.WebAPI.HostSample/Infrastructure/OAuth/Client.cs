@@ -1,8 +1,9 @@
 ﻿using System;
-using DotNetOpenAuth.Messaging;
-using DotNetOpenAuth.OAuth2;
 
 namespace DotNetOpenAuth.WebAPI.HostSample.Infrastructure.OAuth {
+    using DotNetOpenAuth.Messaging;
+    using DotNetOpenAuth.OAuth2;
+
     /// <summary>
 	/// An OAuth 2.0 Client that has registered with this Authorization Server.
 	/// </summary>

@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 
 namespace DotNetOpenAuth.WebAPI.HostSample.Controllers {
+
     [HandleError]
     public class AccountController : Controller {
 
@@ -32,8 +33,8 @@ namespace DotNetOpenAuth.WebAPI.HostSample.Controllers {
             Justification = "Needs to take same parameter type as Controller.Redirect()")]
         public ActionResult LogOn(string userName, bool? rememberMe, string returnUrl) {
             this.FormsAuth.SignIn(userName, rememberMe ?? false);
-            if (MvcApplication.DataContext.Users.FirstOrDefault(u => u.OpenIDClaimedIdentifier == userName) == null) {
-                MvcApplication.DataContext.Users.InsertOnSubmit(new User {
+            if (WebApiApplication.DataContext.Users.FirstOrDefault(u => u.OpenIDClaimedIdentifier == userName) == null) {
+                WebApiApplication.DataContext.Users.InsertOnSubmit(new User {
                     OpenIDFriendlyIdentifier = userName,
                     OpenIDClaimedIdentifier = userName,
                 });

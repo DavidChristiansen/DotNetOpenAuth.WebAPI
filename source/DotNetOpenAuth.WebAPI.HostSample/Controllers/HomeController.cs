@@ -1,14 +1,15 @@
-﻿using System.Collections.Generic;
-using System.Configuration;
-using System.Data.Entity;
-using System.Data.SqlClient;
-using System.IO;
-using System.Linq;
-using System.Web.Mvc;
-using System.Web.Security;
-using DotNetOpenAuth.WebAPI.HostSample.Infrastructure.OAuth;
+﻿
 
 namespace DotNetOpenAuth.WebAPI.HostSample.Controllers {
+    using System.Configuration;
+    using System.Data.SqlClient;
+    using System.IO;
+    using System.Linq;
+    using System.Web.Mvc;
+    using System.Web.Security;
+
+    using DotNetOpenAuth.WebAPI.HostSample.Infrastructure.OAuth;
+
     public class HomeController : Controller {
         string ConnectionString {
             get {
