@@ -33,7 +33,7 @@ This sample uses Framework v4.5.1, MVC5 and requires SQL Express
 3. Navigate to the Host sample (http://localhost:49810/)
 4. Ensure you have SQL Express installed and running
 5. Click the **Create Database** button
-6. Navigate to the client sample (http://localhost:49907/)
+6. Navigate to the client sample (http://localhost:18529/)
 7. Start clicking buttons and enjoy
 
 ##Feedback
