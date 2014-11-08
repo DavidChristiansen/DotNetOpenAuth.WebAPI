@@ -1,6 +1,7 @@
 #DotNetOpenAuth.WebAPI
 *DotNetOpenAuth for ASP.NET WebAPI (OpenID/OAuth/OAuth2)*
 
+[![Build status](https://ci.appveyor.com/api/projects/status/71ev9i45h6ah4wcf?svg=true)](https://ci.appveyor.com/project/DavidChristiansen/dotnetopenauth-webapi)
 
 ##Purpose
 

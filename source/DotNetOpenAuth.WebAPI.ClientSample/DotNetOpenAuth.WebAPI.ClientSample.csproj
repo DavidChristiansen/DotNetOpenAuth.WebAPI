@@ -65,8 +65,7 @@
       <HintPath>..\..\packages\DotNetOpenAuth.OAuth2.Core.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth2.dll</HintPath>
     </Reference>
     <Reference Include="DotNetOpenAuth.OAuth2.Client">
-      <HintPath>..\DotNetOpenAuth.WebAPI.ClientSample.MVC4\Bin\DotNetOpenAuth.OAuth2.Client.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\packages\DotNetOpenAuth.OAuth2.Client.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth2.Client.dll</HintPath>
     </Reference>
     <Reference Include="DotNetOpenAuth.OAuth2.ClientAuthorization">
       <HintPath>..\..\packages\DotNetOpenAuth.OAuth2.ClientAuthorization.4.3.4.13329\lib\net45-full\DotNetOpenAuth.OAuth2.ClientAuthorization.dll</HintPath>
