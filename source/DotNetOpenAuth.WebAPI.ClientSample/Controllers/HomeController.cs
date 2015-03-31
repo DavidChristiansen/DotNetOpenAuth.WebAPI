@@ -20,20 +20,20 @@ namespace DotNetOpenAuth.WebAPI.ClientSample.Controllers {
                 TokenEndpoint = new Uri("http://localhost:49810/OAuth/Token"),
             };
             this.Client = new UserAgentClient(authServer, "samplewebapiconsumer", "samplesecret");
-            this.Authorization = new AuthorizationState();
-            this.Authorization.Callback = new Uri("http://localhost:18529/");
+            this.Authorization = new AuthorizationState {Callback = new Uri("http://localhost:18529/")};
         }
         public ActionResult Index() {
-            if (!string.IsNullOrEmpty(Request.QueryString["code"])) {
-                try {
-                    this.Client.ProcessUserAuthorization(Request.Url, this.Authorization);
-                    var valueString = string.Empty;
-                    if (!string.IsNullOrEmpty(this.Authorization.AccessToken)) {
-                        valueString = CallAPI(this.Authorization);
-                    }
-                    ViewBag.Values = valueString;
-                } catch (ProtocolException ex) {
+            if (string.IsNullOrEmpty(Request.QueryString["code"])) return View();
+            try {
+                this.Client.ProcessUserAuthorization(Request.Url, this.Authorization);
+                var valueString = string.Empty;
+                if (!string.IsNullOrEmpty(this.Authorization.AccessToken)) {
+                    valueString = CallAPI(this.Authorization);
                 }
+                ViewBag.Values = valueString;
+#pragma warning disable 0168
+            } catch (ProtocolException ex) {
+#pragma warning restore 0168
             }
             return View();
         }
