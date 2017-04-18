@@ -1,13 +1,13 @@
-#DotNetOpenAuth.WebAPI
+# DotNetOpenAuth.WebAPI
 *DotNetOpenAuth for ASP.NET WebAPI (OpenID/OAuth/OAuth2)*
 
 [![Build status](https://ci.appveyor.com/api/projects/status/71ev9i45h6ah4wcf?svg=true)](https://ci.appveyor.com/project/DavidChristiansen/dotnetopenauth-webapi)
 
-##Purpose
+## Purpose
 
 This project was developed to look into ways we can bring OAuth to the world of ASP.NET WebAPI.
 
-##Details
+## Details
 
 I have included the following in the source
 
@@ -23,11 +23,11 @@ I have included the following in the source
 
 - A sample authorisation server and WebAPI host utilising the functionality exposed in DotNetOpenAuth.WebAPI
 
-###Requirements
+### Requirements
 
 This sample uses Framework v4.5.1, MVC5 and requires SQL Express
 
-###Getting Started
+### Getting Started
 
 1. Launch the solution in visual studio
 2. Start debugging both the client and host sample projects
@@ -37,6 +37,6 @@ This sample uses Framework v4.5.1, MVC5 and requires SQL Express
 6. Navigate to the client sample (http://localhost:18529/)
 7. Start clicking buttons and enjoy
 
-##Feedback
+## Feedback
 
 As always feedback is always welcome.  Raise an issue if you have problems.
